@@ -1,0 +1,6 @@
+def largest_difference(my_list):
+  return max(my_list) - min(my_list)
+
+my_list = [7,2,4,9]
+ans = largest_difference(my_list)
+print(ans)
