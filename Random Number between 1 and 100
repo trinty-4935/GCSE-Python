@@ -1,0 +1,7 @@
+import random
+def random_number():
+    ans = random.randint(1,100)
+    return ans
+
+ans = random_number()    
+print(ans)
