@@ -1,0 +1,13 @@
+def add_dots(string):
+    newString = '.'.join(string)
+    return newString
+
+print(add_dots("test"))
+
+def remove_dots(string):
+    splitString = string.split(".")
+    newString = "".join(splitString)
+    return newString
+
+
+print(remove_dots("t.e.s.t"))
