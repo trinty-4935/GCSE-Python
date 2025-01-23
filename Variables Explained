@@ -1,0 +1,17 @@
+#Variable explained
+
+name = "Aayan"
+
+#This is a variable
+#A variable has a descriptive name
+#This variable is called name
+#This variable contains a value
+#The value is "Aayan"
+
+name = "Bob"
+
+#The same variable now has a different value
+#The value in variable can change (it is variable ;) )
+#Here is the code to display the value inthis variable
+
+print(name)
