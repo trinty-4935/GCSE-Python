@@ -1,0 +1,10 @@
+vowels = ['a','e','i','o','u']
+    
+    word = input("Enter a word: ")
+
+    if word[0] in vowels:
+        print (word+'way')
+    else:
+        
+        last = word[0] + 'ay'
+        print(word[1:]+last)
