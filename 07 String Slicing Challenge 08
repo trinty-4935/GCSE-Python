@@ -1,10 +1,6 @@
-def upperlowercase():
-    name = input("Enter your First Name: ")
-
+name = input("Enter your First Name: ")
     if len(name) < 5:
         surname = input("Enter your Surname: ")
         print (name.upper()+surname.upper())
     else:
         print(name.lower())
-
-upperlowercase()
