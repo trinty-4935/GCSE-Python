@@ -1,0 +1,118 @@
+import random
+import time  
+
+
+teams = {}
+print("Enter the attack and defense ratings for each team (1-100):")
+for _ in range(20): 
+    team_name = input("Team name: ")
+    attack = int(input(f"Attack rating for {team_name}: "))
+    defense = int(input(f"Defense rating for {team_name}: "))
+    teams[team_name] = {
+        "Attack": attack,
+        "Defense": defense,
+        "Played": 0,
+        "Wins": 0,
+        "Draws": 0,
+        "Losses": 0,
+        "Goals Scored": 0,
+        "Goals Conceded": 0,
+        "Points": 0,
+        "GD": 0
+    }
+
+matches = [(home, away) for home in teams.keys() for away in teams.keys() if home != away]
+
+def simulate_match(home, away):
+    home_attack = teams[home]["Attack"] + 5 
+    home_defense = teams[home]["Defense"] + 5
+    away_attack = teams[away]["Attack"]
+    away_defense = teams[away]["Defense"]
+
+    home_goals = 0
+    away_goals = 0
+    commentary = []
+
+    for minute in range(1, 46):
+        event = random.choices(
+            ["goal_home", "goal_away", "foul_home", "foul_away", "nothing"],
+            weights=[home_attack / 50, away_attack / 50, 15, 15, 40]
+        )[0]
+        if event == "goal_home":
+            home_goals += 1
+            commentary.append(f"{minute}': Goal! {home} scores!")
+        elif event == "goal_away":
+            away_goals += 1
+            commentary.append(f"{minute}': Goal! {away} equalizes!")
+        elif event == "foul_home":
+            commentary.append(f"{minute}': Foul by {home}.")
+        elif event == "foul_away":
+            commentary.append(f"{minute}': Foul by {away}.")
+
+    commentary.append("45': Half-time whistle blows!")
+    commentary.append(f"Half-time score: {home} {home_goals} - {away_goals} {away}")
+
+    for minute in range(46, 91):
+        event = random.choices(
+            ["goal_home", "goal_away", "foul_home", "foul_away", "nothing"],
+            weights=[home_attack / 50, away_attack / 50, 15, 15, 40]
+        )[0]
+        if event == "goal_home":
+            home_goals += 1
+            commentary.append(f"{minute}': Goal! {home} extends their lead!")
+        elif event == "goal_away":
+            away_goals += 1
+            commentary.append(f"{minute}': Goal! {away} strikes back!")
+        elif event == "foul_home":
+            commentary.append(f"{minute}': Foul by {home}.")
+        elif event == "foul_away":
+            commentary.append(f"{minute}': Foul by {away}.")
+
+    commentary.append("90': Full-time whistle blows!")
+    commentary.append(f"Final score: {home} {home_goals} - {away_goals} {away}")
+
+    return home_goals, away_goals, commentary
+
+for home, away in matches:
+    home_goals, away_goals, commentary = simulate_match(home, away)
+    
+    teams[home]["Played"] += 1
+    teams[away]["Played"] += 1
+    teams[home]["Goals Scored"] += home_goals
+    teams[away]["Goals Scored"] += away_goals
+    teams[home]["Goals Conceded"] += away_goals
+    teams[away]["Goals Conceded"] += home_goals
+
+    if home_goals > away_goals:
+        teams[home]["Wins"] += 1
+        teams[away]["Losses"] += 1
+        teams[home]["Points"] += 3
+    elif away_goals > home_goals:
+        teams[away]["Wins"] += 1
+        teams[home]["Losses"] += 1
+        teams[away]["Points"] += 3
+    else:
+        teams[home]["Draws"] += 1
+        teams[away]["Draws"] += 1
+        teams[home]["Points"] += 1
+        teams[away]["Points"] += 1
+
+    teams[home]["GD"] += home_goals - away_goals
+    teams[away]["GD"] += away_goals - home_goals
+
+    # Print live commentary
+    print(f"Match: {home} vs {away}")
+    for line in commentary:
+        print(line)
+        pass
+
+sorted_table = sorted(
+    teams.items(), key=lambda x: (x[1]["Points"], x[1]["GD"]), reverse=True
+)
+
+print("\nAdvanced Premier League Table:")
+print(f"{'Pos':<5}{'Team':<20}{'Pld':<5}{'W':<5}{'D':<5}{'L':<5}{'GF':<5}{'GA':<5}{'GD':<5}{'Pts':<5}")
+for position, (team, stats) in enumerate(sorted_table, start=1):
+    print(f"{position:<5}{team:<20}{stats['Played']:<5}{stats['Wins']:<5}{stats['Draws']:<5}"
+          f"{stats['Losses']:<5}{stats['Goals Scored']:<5}{stats['Goals Conceded']:<5}"
+          f"{stats['GD']:<5}{stats['Points']:<5}")
