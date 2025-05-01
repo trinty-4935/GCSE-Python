@@ -1,5 +1,5 @@
 cars = []
-car1 = input("Enter the name of a car brand (e.g. Ford, Honda): ")
+car1 = input("Enter the name of a car brand: ")
 cars.append(car1)
 car2 = input("Enter another car brand: ")
 cars.append(car2)
