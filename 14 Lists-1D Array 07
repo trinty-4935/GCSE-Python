@@ -1,0 +1,8 @@
+num = [1, 2, 3, 4, 5]
+print(num)
+index = int(input("Enter an index"))
+index = index - 1
+num.pop(index)
+num1 = int(input("Enter a number: "))
+num.insert(index, num1)
+print(num)
