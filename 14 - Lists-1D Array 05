@@ -1,0 +1,10 @@
+food = []
+food1 = input("Enter a type of food: ")
+food.append(food1)
+food2 = input("Enter a type of food: ")
+food.append(food2)
+food3 = input("Enter a type of food: ")
+food.append(food3)
+food4 = input("Enter a type of food: ")
+food.append(food4)
+print(food)
