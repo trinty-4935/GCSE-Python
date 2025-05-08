@@ -1,0 +1,13 @@
+name = []
+name1 = input("Enter a name: ")
+name.append(name1)
+name2 = input("Enter a name: ")
+name.append(name2)
+name3 = input("Enter a name: ")
+name.append(name3)
+another = input("Do you want to enter another? y/n: ")
+while another == "y":
+    name1 = input("Enter a name: ")
+    another = input("Do you want to enter another? y/n: ")
+    name.append(name1)
+print(len(name))
