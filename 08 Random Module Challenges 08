@@ -1,0 +1,13 @@
+import random
+
+score = 0
+for i in range(5):
+    num1 = random.randint(0,50)
+    num2 = random.randint(0,50)
+    ans = num1 + num2
+    print(num1)
+    print(num2)
+    ans1 = int(input("What is the sum of these 2 numbers?: "))
+    if ans == ans1:
+        score = score + 1
+print("You got", score, "out of 5")
