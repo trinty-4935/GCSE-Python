@@ -1,0 +1,12 @@
+EmptyArray = [[0 for column in range(5)] for row in range(2)]
+print(EmptyArray)
+column = int(input("How many columns do you want? 1-5 :  "))
+row = int(input("How many rows do you want? 1-5 :  "))
+EmptyArray = [[0 for column in range(column)] for row in range(row)]
+column1 = int(input("Enter column number of cell you want to edit?: "))
+row1 = int(input("Enter row number of cell you want to edit?: "))
+value = int(input("Enter integer you want to replace this square with: "))
+column1 = column1 - 1
+row1 = row1 - 1
+EmptyArray[column1][row1] = value
+print(EmptyArray)
