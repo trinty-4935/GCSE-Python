@@ -1,0 +1,6 @@
+print("\nopening the file")
+notepad = open("numbers.txt", "w")
+userlines = input("write 5 numbers >>> ")
+notepad.write(userlines)
+notepad.close()
+print("\nGo and open numbers.txt")
