@@ -1,0 +1,6 @@
+print("\nopening the file")
+notepad = open("names.txt", "w")
+names = ("Bob\nMatthew\nSimon\nMark\nOliver")
+notepad.write(names)
+notepad.close()
+print("\nGo and open names.txt")
