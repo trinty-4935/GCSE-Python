@@ -1,0 +1,5 @@
+def main():
+    f = open("names.txt")
+    for line in f.readlines():
+        print(line)
+main()
