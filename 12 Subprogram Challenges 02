@@ -1,0 +1,4 @@
+def options():
+    print("Domination \nTeam Deathmatch \nHeadquarters")
+    num = int(input("Choose an option >>> "))
+options()
