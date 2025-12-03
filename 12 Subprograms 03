@@ -1,0 +1,14 @@
+def options():
+    print("1-Player \n2-Player \nOnline \nExit")
+options()
+num = int(input("Enter an option 1-4"))
+if num == 1:
+    print("1 Player Selected")
+elif num == 2:
+    print("2 Player Selected")
+elif num == 3:
+    print("Online Selected")
+elif num == 4:
+    print("Exiting...")
+else:
+    print("Invalid Choice")
