@@ -1,0 +1,32 @@
+def options():
+    print("0) Exit")
+    print("1) Timetable")
+    print("2) Adding")
+
+
+def inp():
+    num = int(input("Enter an Oprion 0-2 >>> "))
+    if num == 0:
+        print("Bye")
+    elif num == 1:
+        mul()
+    elif num == 2:
+        addition()
+    else:
+        print("Invalid Input")
+        inp()
+
+def mul():
+    num = int(input("Enter a number 1 to 12 >>> "))
+    for i in range(num):
+        print("Timetable")
+
+def addition():
+    num1 = int(input("Enter a number >>> "))
+    num2 = int(input("Enter a number >>> "))
+    print(num1 + num2)
+
+options()
+inp()
+    
+
